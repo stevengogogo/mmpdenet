@@ -1,0 +1,35 @@
+# MMPDE Formulation
+
+\def\v{\vec}
+\def\m{\mathbf}
+
+## Transformation Function 
+
+Suppose a 2D coordination $\v{f}(\cdot): \mathbb{R}^2 \to \mathbb{R}^2$. This fuction takes computational coordinate $(\xi, \eta)$ to physical coordinate $(x,y)$
+$$
+\v{f}(\xi, \eta) = [x, y] = [f_1, f_2]
+$$
+
+The Jacobian matrix becomes 
+
+$$
+\m{J} = \begin{bmatrix}\nabla^T \v{f}_1 \\ \vdots\\ \nabla^T \v{f}_m \end{bmatrix} = \begin{bmatrix} \frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta}\\\frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta}\end{bmatrix}
+$$
+
+
+This can be drived from `jax.jacfwd`:
+
+```{python}
+#| warning: false
+import jax 
+import jax.numpy as jnp
+
+def f(xc):
+    return jnp.array([xc[0]**2 + xc[1], xc[0]+ 2*xc[1]])
+
+
+x = jnp.array([1.,3.])
+
+jax.jacfwd(f)(x)
+```
+
