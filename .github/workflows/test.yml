@@ -9,17 +9,8 @@ defaults:
     shell: bash
 
 jobs:
-  pre-commit-check:
-    name: Pre-Commit Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.4.0
-      - uses: actions/setup-python@v2.3.1
-      - uses: pre-commit/action@v2.0.3
-
   python-check:
     name: Python Check
-    needs: pre-commit-check
     strategy:
       fail-fast: false
       matrix:
