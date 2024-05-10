@@ -33,3 +33,15 @@ x = jnp.array([1.,3.])
 jax.jacfwd(f)(x)
 ```
 
+
+## Monitor function
+
+The solution is 
+
+$$
+u(x,y) = u(x(\xi, \eta), y(\xi, \eta))
+$$
+
+$$
+u_{\xi}(x,y) = u_x x_{\xi} + u_y y_{\xi}
+$$
